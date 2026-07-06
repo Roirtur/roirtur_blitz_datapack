@@ -57,4 +57,4 @@ execute if score obj55 orace_list matches 1.. if score obj55 orace_claim matches
 execute if score obj56 orace_list matches 1.. if score obj56 orace_claim matches 0 run scoreboard players add #list_open orace_list 1
 execute if score obj57 orace_list matches 1.. if score obj57 orace_claim matches 0 run scoreboard players add #list_open orace_list 1
 execute if score #list_open orace_list matches 0 run tellraw @a [{"text":"No objective list entries remain. Resolving the round on points.","color":"yellow"}]
-execute if score #list_open orace_list matches 0 run function objective_race:game/time_up
+execute if score #list_open orace_list matches 0 run function objective_race:game/list_exhausted
