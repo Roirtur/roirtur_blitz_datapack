@@ -1,0 +1,60 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+
+# Minecraft-generated / local testing files
+.minecraft/
+run/
+server/
+world/
+worlds/
+saves/
+crash-reports/
+debug/
+usercache.json
+usernamecache.json
+whitelist.json
+ops.json
+banned-players.json
+banned-ips.json
+
+# Build / export outputs
+build/
+dist/
+out/
+target/
+*.zip
+*.mcpack
+
+# Node / script tooling, if used
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python tooling, if used
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Java / Gradle tooling, if used
+.gradle/
+*.class

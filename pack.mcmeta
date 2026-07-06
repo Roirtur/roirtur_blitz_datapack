@@ -1,0 +1,10 @@
+{
+  "pack": {
+    "description": "Objective Race - fast multiplayer objective race minigame",
+    "min_format": [
+      101,
+      1
+    ],
+    "max_format": 101
+  }
+}
