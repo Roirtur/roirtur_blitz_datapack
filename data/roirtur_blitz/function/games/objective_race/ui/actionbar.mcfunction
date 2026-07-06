@@ -1,0 +1,3 @@
+execute if score #round_time orace_round matches 1.. run title @s actionbar [{"text":"Score ","color":"yellow"},{"score":{"name":"@s","objective":"orace_score"},"color":"aqua"},{"text":"/","color":"yellow"},{"score":{"name":"#target","objective":"orace_target"},"color":"aqua"},{"text":"  Time left ","color":"yellow"},{"score":{"name":"#time_left","objective":"orace_tmp"},"color":"aqua"}]
+execute if score #round_time orace_round matches 0 run title @s actionbar [{"text":"Score ","color":"yellow"},{"score":{"name":"@s","objective":"orace_score"},"color":"aqua"},{"text":"/","color":"yellow"},{"score":{"name":"#target","objective":"orace_target"},"color":"aqua"},{"text":"  Time ","color":"yellow"},{"text":"No Limit","color":"green"}]
+

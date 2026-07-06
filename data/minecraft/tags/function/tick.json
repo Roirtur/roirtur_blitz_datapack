@@ -1,6 +1,5 @@
 {
   "values": [
-    "objective_race:tick",
-    "objective_race:lobby/click_tick"
+    "roirtur_blitz:tick"
   ]
 }

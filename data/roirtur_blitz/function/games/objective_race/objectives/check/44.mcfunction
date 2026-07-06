@@ -1,0 +1,3 @@
+execute store result score @s orace_tmp run clear @s minecraft:arrow 0
+execute if score @s orace_tmp matches 16.. run scoreboard players set @s orace_done 1
+

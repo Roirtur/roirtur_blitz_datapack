@@ -1,168 +1,240 @@
-# Objective Race
+# Roirtur Blitz
 
-`objective_race` is a Minecraft Java datapack for fast free-for-all rounds where players race to complete shared objectives before anyone else reaches the target score.
+Roirtur Blitz is a modular Minecraft Java datapack built as a hub for multiple minigames.
 
-Default round profile:
+Current implemented game:
+- Objective Race
 
-- Mode: `shared_evolving`
-- Target count: `5`
-- Difficulty preset: `balanced`
-- Round time: `600` seconds
-- Keep inventory: `on`
-- Powerups: reserved, disabled in v1
+Planned future games:
+- Relic Chaos
+- Stock Market
+- Shared Treasure Hunt
+- PvP Shop Duel
+- Hidden Block Hunt
 
 ## Install
 
-1. Put the `objective_race` folder in your world's `datapacks/` folder.
-2. Join the world and run `/reload`.
-3. Run `/function objective_race:setup`.
-4. Either stand in your lobby area and run `/function objective_race:lobby/set`, or stand at the desired center and run `/function objective_race:lobby/build`.
-
-## Quick Start
-
-Run these in order:
+1. Put this datapack in your world's `datapacks` folder.
+2. Join the world.
+3. Run:
 
 ```mcfunction
 /reload
-/function objective_race:setup
-/function objective_race:lobby/build
-/function objective_race:settings/show
-/function objective_race:game/start
+/function roirtur_blitz:setup
+/function roirtur_blitz:lobby/build
 ```
 
-For objective list mode:
+## Quick Start
+
+Build and initialize everything:
 
 ```mcfunction
-/function objective_race:settings/mode_list
-/function objective_race:game/start
+/reload
+/function roirtur_blitz:setup
+/function roirtur_blitz:lobby/build
 ```
 
-For solo testing:
+Go to the main Blitz lobby:
 
 ```mcfunction
-/function objective_race:settings/allow_solo_on
-/function objective_race:game/start
+/function roirtur_blitz:lobby/tp
 ```
 
-To re-show the active list during a list round:
+Go directly to the Objective Race lobby:
 
 ```mcfunction
-/function objective_race:ui/show_list
+/function roirtur_blitz:games/objective_race/lobby/tp
 ```
 
-## Public Functions
+Start Objective Race:
 
-Core:
+```mcfunction
+/function roirtur_blitz:games/objective_race/game/start
+```
 
-- `objective_race:setup`
-- `objective_race:lobby/set`
-- `objective_race:lobby/build`
-- `objective_race:game/start`
-- `objective_race:game/stop`
-- `objective_race:game/reset`
+## Public Commands
 
-Settings:
+Global commands:
+- `roirtur_blitz:setup` initializes the Blitz datapack and Objective Race module defaults.
+- `roirtur_blitz:lobby/build` builds the main Blitz lobby and every currently available sub-lobby.
+- `roirtur_blitz:lobby/set` saves the current position as the main Blitz lobby return point.
+- `roirtur_blitz:lobby/tp` teleports you to the main Blitz lobby.
+- `roirtur_blitz:reset` resets all currently installed game modules.
 
-- `objective_race:settings/show`
-- `objective_race:settings/mode_shared`
-- `objective_race:settings/mode_list`
-- `objective_race:settings/target_3`
-- `objective_race:settings/target_5`
-- `objective_race:settings/target_7`
-- `objective_race:settings/target_10`
-- `objective_race:settings/difficulty_easy`
-- `objective_race:settings/difficulty_balanced`
-- `objective_race:settings/difficulty_hardcore`
-- `objective_race:settings/difficulty_chaos`
-- `objective_race:settings/keep_inventory_on`
-- `objective_race:settings/keep_inventory_off`
-- `objective_race:settings/allow_solo_on`
-- `objective_race:settings/allow_solo_off`
-- `objective_race:settings/time_300`
-- `objective_race:settings/time_600`
-- `objective_race:settings/time_900`
-- `objective_race:settings/time_1200`
-- `objective_race:settings/time_unlimited`
+Objective Race commands:
+- `roirtur_blitz:games/objective_race/setup` initializes Objective Race on its own.
+- `roirtur_blitz:games/objective_race/lobby/build` builds the Objective Race sub-lobby.
+- `roirtur_blitz:games/objective_race/lobby/set` saves the Objective Race lobby position.
+- `roirtur_blitz:games/objective_race/lobby/tp` teleports you to the Objective Race lobby.
+- `roirtur_blitz:games/objective_race/settings/show` shows the current Objective Race settings.
+- `roirtur_blitz:games/objective_race/game/start` starts an Objective Race round.
+- `roirtur_blitz:games/objective_race/game/stop` force-stops the current Objective Race round.
+- `roirtur_blitz:games/objective_race/game/reset` fully resets Objective Race state.
 
-Useful extra:
+Objective Race settings:
+- `roirtur_blitz:games/objective_race/settings/mode_shared`
+- `roirtur_blitz:games/objective_race/settings/mode_list`
+- `roirtur_blitz:games/objective_race/settings/target_3`
+- `roirtur_blitz:games/objective_race/settings/target_5`
+- `roirtur_blitz:games/objective_race/settings/target_7`
+- `roirtur_blitz:games/objective_race/settings/target_10`
+- `roirtur_blitz:games/objective_race/settings/difficulty_easy`
+- `roirtur_blitz:games/objective_race/settings/difficulty_balanced`
+- `roirtur_blitz:games/objective_race/settings/difficulty_hardcore`
+- `roirtur_blitz:games/objective_race/settings/difficulty_chaos`
+- `roirtur_blitz:games/objective_race/settings/keep_inventory_on`
+- `roirtur_blitz:games/objective_race/settings/keep_inventory_off`
+- `roirtur_blitz:games/objective_race/settings/allow_solo_on`
+- `roirtur_blitz:games/objective_race/settings/allow_solo_off`
+- `roirtur_blitz:games/objective_race/settings/time_300`
+- `roirtur_blitz:games/objective_race/settings/time_600`
+- `roirtur_blitz:games/objective_race/settings/time_900`
+- `roirtur_blitz:games/objective_race/settings/time_1200`
+- `roirtur_blitz:games/objective_race/settings/time_unlimited`
 
-- `objective_race:ui/show_list`
+Objective Race utility commands:
+- `roirtur_blitz:games/objective_race/ui/show_list`
 
-Debug:
+Objective Race debug commands:
+- `roirtur_blitz:games/objective_race/debug/status`
+- `roirtur_blitz:games/objective_race/debug/force_next_objective`
+- `roirtur_blitz:games/objective_race/debug/complete_current`
+- `roirtur_blitz:games/objective_race/debug/end_game`
 
-- `objective_race:debug/status`
-- `objective_race:debug/force_next_objective`
-- `objective_race:debug/complete_current`
-- `objective_race:debug/end_game`
+## Lobby Layout
 
-## Implemented Objective Pool
+`/function roirtur_blitz:lobby/build` builds:
+- the main Roirtur Blitz lobby
+- the Objective Race sub-lobby
 
-The v1 pool includes 57 objectives across easy, medium, and hard bands. Highlights:
+The main lobby is the parent hub.
 
-- Early gathering and crafting: logs, cobblestone, coal, copper, iron, basic tools, shield, bucket, furnace
-- Location goals: water touch, Y 100+, Y 0-, Y -20-, Y -50-, Nether entry
-- Combat/mob goals: zombie, skeleton, spider, hostile mob totals
-- Progression goals: iron gear, bow use, redstone, lapis, diamond, emerald, arrows
-- Harder loot goals: quartz, glowstone dust, magma cream, blaze drops, obsidian, potion
+From there you can:
+- click the Objective Race panel
+- or run `/function roirtur_blitz:games/objective_race/lobby/tp`
 
-Practical v1 simplifications:
+Inside the Objective Race sub-lobby, there is a `BLITZ MAIN LOBBY` panel that returns players to the main hub.
 
-- `Eat any cooked food` was simplified to `Obtain any cooked food`.
-- `Golden apple if feasible` was simplified to `Hold an apple and a gold ingot`.
-- Some armor/potion goals use possession checks instead of craft/brew-only checks.
+## Objective Race
 
-## How It Works
+Objective Race keeps its current gameplay behavior:
+- shared evolving objective mode
+- objective list mode
+- configurable target count
+- configurable difficulty
+- configurable round time
+- keep inventory toggle
+- solo testing toggle
+- sudden death on timer tie
+- full Objective Race lobby and debug flow
 
-- `shared_evolving`: one global objective is active; first completion scores a point and rolls a new objective.
-- `objective_list`: the datapack generates `(target * 2) - 1` unique objectives; each can only be claimed once globally.
-- If the timer expires, the datapack resolves by score, then most recent score, then shared sudden death if still tied.
+Objective list mode now also ends immediately if every listed objective has been claimed. The player with the highest score wins, and ties produce multiple winners.
 
-## Adding New Objectives
+## Architecture
 
-Each objective currently has three places to touch:
+Roirtur Blitz now uses a modular layout:
 
-1. Add a new check file in [data/objective_race/function/objectives/check](data/objective_race/function/objectives/check).
-2. Add its text to:
-   - [data/objective_race/function/ui/show_current_objective.mcfunction](data/objective_race/function/ui/show_current_objective.mcfunction)
-   - [data/objective_race/function/ui/announce_completion.mcfunction](data/objective_race/function/ui/announce_completion.mcfunction)
-   - [data/objective_race/function/ui/show_list.mcfunction](data/objective_race/function/ui/show_list.mcfunction)
-3. Wire the new ID into:
-   - [data/objective_race/function/objectives/shared/check_player.mcfunction](data/objective_race/function/objectives/shared/check_player.mcfunction)
-   - [data/objective_race/function/objectives/list/check_player.mcfunction](data/objective_race/function/objectives/list/check_player.mcfunction)
-   - the difficulty ranges in [data/objective_race/function/objectives/select_weighted.mcfunction](data/objective_race/function/objectives/select_weighted.mcfunction)
+```text
+data/
+  minecraft/
+    tags/
+      function/
+        load.json
+        tick.json
 
-If the objective needs stat baselines, also update:
+  roirtur_blitz/
+    function/
+      load.mcfunction
+      tick.mcfunction
+      setup.mcfunction
+      reset.mcfunction
+      lobby/
+      games/
+        objective_race/
+    predicate/
+      games/
+        objective_race/
+```
 
-- [data/objective_race/function/objectives/init_round.mcfunction](data/objective_race/function/objectives/init_round.mcfunction)
-- [data/objective_race/function/objectives/shared/init_current.mcfunction](data/objective_race/function/objectives/shared/init_current.mcfunction)
-- [data/objective_race/function/load.mcfunction](data/objective_race/function/load.mcfunction)
+Global responsibilities:
+- datapack load and tick entry points
+- main Blitz lobby
+- global setup and reset dispatch
+- future game registry shell
+
+Objective Race module responsibilities:
+- all round logic
+- all settings
+- all UI
+- all objectives
+- all lobbies and sub-lobby interactions
+- all Objective Race predicates and internal utilities
+
+## Adding Future Games
+
+Future games should follow the same module layout as Objective Race:
+
+```text
+data/roirtur_blitz/function/games/<game_name>/
+data/roirtur_blitz/predicate/games/<game_name>/
+```
+
+To add a new game later:
+1. Create a new module folder under `games/`.
+2. Give it isolated scoreboards, tags, bossbars, markers, and settings.
+3. Add its lobby builder to `roirtur_blitz:lobby/build`.
+4. Add conditional tick dispatch in `roirtur_blitz:tick`.
+5. Keep all game-specific logic inside that module.
 
 ## Known Limitations
 
-- Spawn spread still uses the default `80` to `250` block values directly in `game/start`, but each round now picks a random arena center several million blocks away in the overworld first, which makes accidental reuse of the same terrain extremely unlikely.
-- If only one active player remains online, the round continues instead of pausing.
-- Solo play is enabled only when you explicitly turn on `objective_race:settings/allow_solo_on`; it is meant for testing, not normal competition.
-- Objective list mode does not refill after claims; if the list runs dry, the datapack resolves the round immediately on points and sudden death if needed.
-- High-complexity objectives from the prompt are still TODO: lava survival, villager trading, PvP damage-specific tasks, brewing, enchanted-item detection, return-from-dimension, ancient debris, and several luck-heavy rares.
-- Some possession-based objectives can be completed by already holding the item when the goal appears. That is intentional for v1 to keep the pack stable and fast.
+- Full multi-round Blitz mode is not implemented yet.
+- Only Objective Race is currently playable.
+- The pack folder on disk may still be named `objective_race`, but the datapack namespace and runtime architecture are now `roirtur_blitz`.
+- Global reset currently dispatches to the installed game modules and is still centered on Objective Race because it is the only live module.
 
 ## Test Plan
 
-- Test with exactly 2 players.
-- Test with 3+ players.
-- Test `shared_evolving`.
-- Test `objective_list`.
-- Test target count `3`.
-- Test target count `5`.
-- Test keep inventory on.
-- Test keep inventory off.
-- Test solo mode on.
-- Test solo mode off.
-- Test time settings 300 and 600.
-- Test unlimited time.
-- Test death during a round.
-- Test disconnect/reconnect during a round.
-- Test `/function objective_race:game/reset` mid-round.
-- Test `/reload` during countdown.
-- Test `/reload` during a live round.
-- Test time expiry and sudden death.
+Load tests:
+
+```mcfunction
+/reload
+/function roirtur_blitz:setup
+```
+
+Lobby tests:
+
+```mcfunction
+/function roirtur_blitz:lobby/build
+/function roirtur_blitz:lobby/tp
+/function roirtur_blitz:games/objective_race/lobby/tp
+```
+
+Objective Race tests:
+
+```mcfunction
+/function roirtur_blitz:games/objective_race/settings/show
+/function roirtur_blitz:games/objective_race/game/start
+/function roirtur_blitz:games/objective_race/settings/mode_shared
+/function roirtur_blitz:games/objective_race/game/start
+/function roirtur_blitz:games/objective_race/settings/mode_list
+/function roirtur_blitz:games/objective_race/game/start
+```
+
+Reset tests:
+
+```mcfunction
+/function roirtur_blitz:games/objective_race/game/reset
+/function roirtur_blitz:reset
+```
+
+Behavior checks:
+- test shared objective mode
+- test objective list mode
+- test target counts 3 and 5
+- test keep inventory on and off
+- test solo mode
+- test player death and respawn
+- test `/reload` during development
+- test list exhaustion resolution
+- test return from Objective Race lobby to the main Blitz lobby
